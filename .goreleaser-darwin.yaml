@@ -16,17 +16,17 @@ before:
     # - go generate ./...
 
 builds:
-  - id: linux
-    goos: [linux]
-    goarch: [amd64]
-    env:
-      - CGO_ENABLED=1
-      # - CC=gcc
-    ldflags:
-      - -s -w
-      - "-X main.version={{ .Version }}"
-    gcflags:
-      - all=-trimpath
+  # - id: linux
+  #   goos: [linux]
+  #   goarch: [amd64]
+  #   env:
+  #     - CGO_ENABLED=1
+  #     # - CC=gcc
+  #   ldflags:
+  #     - -s -w
+  #     - "-X main.version={{ .Version }}"
+  #   gcflags:
+  #     - all=-trimpath
 
   # - id: linux_arm64
   #   goos: [linux]
@@ -52,29 +52,29 @@ builds:
   #   gcflags:
   #     - all=-trimpath
 
-  # - id: darwin_arm64
-  #   goos: [darwin]
-  #   goarch: [arm64]
-  #   env:
-  #     - CGO_ENABLED=1
-  #     - CC=aarch64-linux-gnu-gcc
-  #   ldflags:
-  #     - -s -w
-  #     - "-X main.version={{ .Version }}"
-  #   gcflags:
-  #     - all=-trimpath
-
-  - id: windows
-    goos: [windows]
-    goarch: [amd64]
+  - id: darwin_arm64
+    goos: [darwin]
+    goarch: [arm64]
     env:
-      - CGO_ENABLED=0
-      # - CC=gcc
+      - CGO_ENABLED=1
+      - CC=aarch64-linux-gnu-gcc
     ldflags:
       - -s -w
       - "-X main.version={{ .Version }}"
     gcflags:
       - all=-trimpath
+
+  # - id: windows
+  #   goos: [windows]
+  #   goarch: [amd64]
+  #   env:
+  #     - CGO_ENABLED=0
+  #     # - CC=gcc
+  #   ldflags:
+  #     - -s -w
+  #     - "-X main.version={{ .Version }}"
+  #   gcflags:
+  #     - all=-trimpath
 
 archives:
   - formats: [tar.gz]
